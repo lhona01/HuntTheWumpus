@@ -9,7 +9,9 @@ namespace HuntTheWumpus1
     public class Player
     {
         public bool canSee { get; set; }
-        public bool canHear { get; set; }
+        public Sound Hear { get; set; }
         public bool canSmell { get; set; }
     }
+
+    public enum Sound { dripping, rushing };
 }

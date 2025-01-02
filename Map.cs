@@ -11,7 +11,7 @@ namespace HuntTheWumpus1
 {
     public class Map
     {
-        public Room[,] @Room { get; set; }
+        public Object[,] Room { get; private set; }
         public Map(int row, int column)
         {
             Room = new Room[row, column];
@@ -21,21 +21,16 @@ namespace HuntTheWumpus1
             {
                 for (int y = 0; y < column; y++)
                 {
-                    @Room[x, y] = new Room(countRoomsAssigned);
+                    if (x == 0 && y == 0)
+                        Room[x, y] = new EntranceRoom();
+                    else if (x == 0 && y == 2)
+                        Room[x, y] = new FountainRoom();
+                    else
+                        Room[x, y] = new Room();
+                    
                     countRoomsAssigned++;
                 }
             }
-        }
-    }
-
-    // Class Map contains rooms
-    public class Room
-    {
-        public int RoomNumber { get; private set; }
-
-        public Room(int roomNumber)
-        {
-            RoomNumber = roomNumber;
         }
     }
 }
